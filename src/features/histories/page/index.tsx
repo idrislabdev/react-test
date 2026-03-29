@@ -18,13 +18,11 @@ import { SkeletonCard } from "@/features/histories/components/sekeleton";
 const HistoryPage = () => {
   const { user } = useAuthStore();
 
-  // State Data
   const [histories, setHistories] = useState<ITransaction[]>([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [totalData, setTotalData] = useState(0);
 
-  // State Modal
   const [openModal, setOpenModal] = useState(false);
   const [dataDetail, setDetaDetail] = useState<ITransaction>(
     {} as ITransaction,
@@ -43,7 +41,6 @@ const HistoryPage = () => {
           page,
         );
 
-        // ARTIFICIAL DELAY: Minimal skeleton muncul selama 800ms
         const elapsedTime = Date.now() - startTime;
         const remainingDelay = Math.max(0, 800 - elapsedTime);
 

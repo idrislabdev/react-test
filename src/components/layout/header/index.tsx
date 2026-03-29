@@ -31,12 +31,10 @@ export const MainHeader = (props: { withFilter: boolean }) => {
   const navigate = useNavigate();
   const { user, isLoggedIn, logOut } = useAuthStore();
 
-  // State local untuk input agar terasa responsif
   const [inputValue, setInputValue] = useState(
     searchParams.get("search") || "",
   );
 
-  // Sinkronisasi input jika search params berubah (misal tombol back)
   useEffect(() => {
     setInputValue(searchParams.get("search") || "");
   }, [searchParams]);
@@ -44,14 +42,11 @@ export const MainHeader = (props: { withFilter: boolean }) => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Encode value untuk URL
     const query = inputValue.trim();
 
     if (query) {
-      // Arahkan ke home dengan query param search
       navigate(`/?search=${encodeURIComponent(query)}`);
     } else {
-      // Jika kosong, balikkan ke home tanpa filter search
       navigate(`/`);
     }
   };

@@ -13,7 +13,6 @@ export default defineConfig({
   },
   server: {
     watch: {
-      // Abaikan perubahan pada db.json agar tidak trigger reload
       ignored: ["**/db.json"],
     },
   },

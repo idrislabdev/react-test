@@ -11,7 +11,7 @@ export const axiosInstance = axios.create({
 
 export interface ITransaction {
   id: string;
-  userId: number; // Ubah ke number agar konsisten dengan payload di CheckOutPage
+  userId: number;
   productId: number;
   productName: string;
   provider: string;
@@ -27,24 +27,21 @@ export interface ITransaction {
 }
 
 export const transactionService = {
-  // Simpan transaksi baru
   createTransaction: async (data: ITransaction) => {
-    // data.userId di sini sudah dipastikan Number dari CheckOutPage
     const response = await axiosInstance.post("/transactions", data);
     return response.data;
   },
 
-  // Ambil history dengan pagination ala json-server v1
   getTransactionHistory: async (
     userId: number,
     page: number = 1,
   ): Promise<any> => {
     try {
       const queryParams: any = {
-        userId: userId, // userId sudah number dari parameter
+        userId: userId,
         _page: page,
         _per_page: 5,
-        _sort: "-createdAt", // Tanda minus (-) berarti Descending di v1
+        _sort: "-createdAt",
       };
 
       const response = await axiosInstance.get<any>("transactions", {
@@ -52,7 +49,6 @@ export const transactionService = {
       });
 
       return {
-        // json-server v1 membungkus array di dalam properti 'data' jika pakai pagination
         data: response.data.data || response.data,
         total:
           response.data.items ||

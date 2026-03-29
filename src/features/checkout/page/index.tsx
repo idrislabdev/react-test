@@ -12,8 +12,6 @@ import { PAYMENT_METHODS } from "@/features/checkout/types/payment";
 import { useAuthStore } from "@/features/auth/stores/useAuthStore";
 import { transactionService } from "@/features/histories/services/transactionService";
 
-// --- KOMPONEN SKELETON ---
-// --- KOMPONEN SKELETON (Identik dengan Layout Utama) ---
 const SkeletonCheckout = () => (
   <div className="min-h-screen bg-neutral-50/50 pb-20">
     <div className="flex gap-8 py-20 px-10 mx-auto max-w-310 items-start animate-pulse">
@@ -96,7 +94,6 @@ export const CheckOutPage = () => {
   const adminFee = selectedPayment?.adminFee || 0;
   const totalPrice = (product?.price || 0) + adminFee;
 
-  // Artificial Delay untuk Skeleton
   useEffect(() => {
     const timer = setTimeout(() => setPageLoading(false), 800);
     return () => clearTimeout(timer);

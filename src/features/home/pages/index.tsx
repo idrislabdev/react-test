@@ -3,12 +3,10 @@ import { IconFlameFilled, IconPackage } from "@tabler/icons-react";
 import { productService } from "@/features/home/services/productService";
 import type { IProduct } from "@/features/home/types";
 
-// Import komponen internal
 import { CardMain } from "@/features/home/components/card-main";
 import CardPotrait from "@/features/home/components/card-potrait";
 import { useSearchParams } from "react-router-dom";
 
-// --- KOMPONEN SKELETON INTERNAL ---
 const SkeletonBestDeal = () => (
   <div className="w-1/4 h-[340px] bg-white border border-neutral-100 rounded-[2rem] p-5 animate-pulse flex flex-col gap-4">
     <div className="flex items-center gap-2">
@@ -42,30 +40,25 @@ const SkeletonCardMain = () => (
 export const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // State Data
   const [bestDeals, setBestDeals] = useState<IProduct[]>([]);
   const [products, setProducts] = useState<IProduct[]>([]);
   const [totalData, setTotalData] = useState(0);
 
-  // State Loading
   const [loading, setLoading] = useState(false);
   const [loadingDeals, setLoadingDeals] = useState(true);
 
-  // Ambil Filter dari URL Params
   const currentProvider = searchParams.get("provider") || "";
   const currentPrice = searchParams.get("price") || "";
   const currentQuota = searchParams.get("quota") || "";
   const currentSearch = searchParams.get("search") || "";
   const page = Number(searchParams.get("page")) || 1;
 
-  // Fungsi untuk update halaman di URL
   const setPage = (newPage: number) => {
     const newParams = new URLSearchParams(searchParams);
     newParams.set("page", newPage.toString());
     setSearchParams(newParams);
   };
 
-  // 1. Fetch Best Deals (Hanya saat mount awal)
   useEffect(() => {
     const fetchBestDeals = async () => {
       try {
@@ -81,7 +74,6 @@ export const HomePage = () => {
     fetchBestDeals();
   }, []);
 
-  // 2. Fetch Semua Produk (Trigger saat page atau filter berubah)
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);

@@ -8,7 +8,6 @@ interface CheckoutState {
   phoneNumber: string;
   selectedPayment: IPaymentMethod | null;
 
-  // Actions
   setInitialCheckout: (product: IProduct, phone: string) => void;
   setPaymentMethod: (method: IPaymentMethod) => void;
   resetCheckout: () => void;

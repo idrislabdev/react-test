@@ -11,7 +11,6 @@ export const axiosInstance = axios.create({
   },
 });
 
-// --- FUNGSI LOGIN ---
 export async function login(
   email: string,
   password: string,
@@ -45,12 +44,10 @@ export async function login(
   }
 }
 
-// --- FUNGSI REGISTER (TAMBAHAN BARU) ---
 export async function register(
-  userData: Omit<IUser, "id">, // Mengirim data tanpa ID karena ID akan dibuat otomatis oleh json-server
+  userData: Omit<IUser, "id">,
 ): Promise<IAuthResponse> {
   try {
-    // 1. Cek dulu apakah email sudah terdaftar
     const checkUser = await axiosInstance.get<IUser[]>("users", {
       params: { email: userData.email },
     });
@@ -62,10 +59,9 @@ export async function register(
       };
     }
 
-    // 2. Jika email aman, simpan user baru
     const { data } = await axiosInstance.post<IUser>("users", {
       ...userData,
-      role: "user", // Default role untuk register mandiri
+      role: "user",
     });
 
     return {

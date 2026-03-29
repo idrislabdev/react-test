@@ -24,7 +24,6 @@ const ModalConfirmCheckout: FC<ModalConfirmCheckoutProps> = ({
   const navigate = useNavigate();
   const resetCheckout = useCheckoutStore((state) => state.resetCheckout);
 
-  // JANGAN return null di sini agar Dialog tidak hancur (unmount) saat loading
   const goTransaksi = () => {
     resetCheckout();
     navigate("/history");
@@ -44,7 +43,6 @@ const ModalConfirmCheckout: FC<ModalConfirmCheckoutProps> = ({
   return (
     <Dialog
       open={open}
-      // Mencegah modal tertutup jika user klik luar/ESC saat data belum ada (loading)
       onOpenChange={(isOpen) => {
         if (!isOpen && data) {
           // Jika ingin mengizinkan tutup manual setelah data ada
@@ -62,10 +60,10 @@ const ModalConfirmCheckout: FC<ModalConfirmCheckoutProps> = ({
           <DialogContent
             className="p-6 outline-none sm:max-w-[425px]"
             onPointerDownOutside={(e) => {
-              if (!data) e.preventDefault(); // Jangan tutup jika masih loading
+              if (!data) e.preventDefault();
             }}
             onEscapeKeyDown={(e) => {
-              if (!data) e.preventDefault(); // Jangan tutup jika masih loading
+              if (!data) e.preventDefault();
             }}
           >
             {/* TAMPILAN LOADING JIKA DATA BELUM ADA */}

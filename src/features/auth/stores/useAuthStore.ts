@@ -14,7 +14,6 @@ export const useAuthStore = create<IAuthState>()(
         }),
       logOut: () => {
         set({ user: null, isLoggedIn: false });
-        // Opsional: hapus sisa data lain jika ada
       },
     }),
     {

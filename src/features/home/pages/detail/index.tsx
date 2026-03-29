@@ -107,7 +107,6 @@ const DetailProductPage = () => {
       try {
         const data = await productService.getProductById(Number(id));
 
-        // Artificial Delay 800ms
         const elapsedTime = Date.now() - startTime;
         const waitTime = Math.max(0, 800 - elapsedTime);
 

@@ -1,5 +1,3 @@
-// src/features/checkout/types/payment.ts
-
 export interface IPaymentMethod {
   id: string;
   name: string;

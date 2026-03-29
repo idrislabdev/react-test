@@ -6,7 +6,6 @@ import HistoryPage from "@/features/histories/page";
 import { HomePage } from "@/features/home/pages";
 import DetailProductPage from "@/features/home/pages/detail";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-// Import komponen ProtectedRoute
 
 export const AppRoutes = () => {
   return (
