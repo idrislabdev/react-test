@@ -63,7 +63,7 @@ export const MainHeader = (props: { withFilter: boolean }) => {
   return (
     <>
       <header className="w-full top-0 left-0 right-0 fixed bg-white z-50">
-        <div className="flex flex-col shadow-xs divide-y divide-neutral-100">
+        <div className="flex flex-col  border-b border-neutral-100">
           <div className="flex items-center justify-between py-3 gap-4 w-full mx-auto max-w-310 px-10">
             <div className="flex items-center gap-3 flex-1">
               <Link to={"/"} className="flex items-center gap-1">

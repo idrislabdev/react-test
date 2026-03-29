@@ -79,6 +79,8 @@ Cara Menjalankan Project
 3. Jalankan Aplikasi: npm run dev
 4. Jangan lupa .env (VITE_BASE_URL=http://localhost:3000
    Akses melalui: http://localhost:5173
+5. user yang bisa dipakai (lihat db.json)
+   user: siti@mail.com, password:user789
 
 ---
 
