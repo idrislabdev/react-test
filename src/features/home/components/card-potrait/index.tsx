@@ -25,7 +25,6 @@ const CardPotrait = ({ product }: { product: IProduct }) => {
         </span>
         <h5 className="text-neutral-400 font-bold text-[10px] uppercase tracking-widest leading-none">
           {product.provider}
-          Ward
         </h5>
       </div>
 
